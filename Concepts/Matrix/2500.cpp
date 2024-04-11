@@ -2,6 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// bruteforce
 int deleteGreatestValue(vector<vector<int>> &grid)
 {
     int rowLength = grid[0].size();
@@ -13,7 +14,7 @@ int deleteGreatestValue(vector<vector<int>> &grid)
         {
             // storing max for each row
             int maxIndex = 0, localMax = 0;
-            
+
             for (int j = 0; j < grid[i].size(); j++)
             {
                 if (grid[i][j] > localMax)
