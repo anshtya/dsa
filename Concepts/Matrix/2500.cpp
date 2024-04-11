@@ -2,7 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// bruteforce
+// bruteforce (N^3)
 int deleteGreatestValue(vector<vector<int>> &grid)
 {
     int rowLength = grid[0].size();
@@ -38,5 +38,25 @@ int deleteGreatestValue(vector<vector<int>> &grid)
         maxNum = 0;
     }
 
+    return ans;
+}
+
+// Optimized (M * NlogN) for M*N, comparing column wise
+int deleteMaximumValue(vector<vector<int> >& vect)
+{
+ 
+    for (int i = 0; i < vect.size(); i++) {
+        sort(vect[i].rbegin(), vect[i].rend());
+    }
+ 
+    int ans = 0;
+    for (int i = 0; i < vect[0].size(); i++) {
+        int val = vect[0][i];
+        for (int j = 1; j < vect.size(); j++) {
+            val = max(val, vect[j][i]);
+ 
+            ans += val;
+        }
+    }
     return ans;
 }
